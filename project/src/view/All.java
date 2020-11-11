@@ -45,7 +45,7 @@ public class All extends JFrame{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		 try {
-	            img = ImageIO.read(new File("img/allBackground.png"));
+	            img = ImageIO.read(new File("project/img/allBackground.png"));
 	            System.out.println("Image load Success");
 	        } catch (IOException e) {
 	            System.out.println("Image load Fail");
