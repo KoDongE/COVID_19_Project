@@ -58,7 +58,7 @@ public class All extends JFrame{
 		setSize(1600, 900);
 		
 		 try {
-	            img = ImageIO.read(new File("img/allBackground.png"));
+	            img = ImageIO.read(new File("project/img/allBackground.png"));
 	            System.out.println("\nImage load Success");
 	        } catch (IOException e) {
 	            System.out.println("Image load Fail");
@@ -120,31 +120,31 @@ public class All extends JFrame{
 			labelPane.add(patientsLabel[gu_num]);
 		}
 		
-		patientsLabel[1].setBounds(100, 100 ,100,100); // °­¼­
-		patientsLabel[2].setBounds(200, 100 ,100,100); // °­µ¿
-		patientsLabel[3].setBounds(300, 100 ,100,100); // °­³²
-		patientsLabel[4].setBounds(400, 100 ,100,100); // ¼ººÏ
-		patientsLabel[5].setBounds(500, 100 ,100,100); // Áß±¸
-		patientsLabel[6].setBounds(600, 100 ,100,100); // ÀºÆò
-		patientsLabel[7].setBounds(100, 100 ,100,100); // ±ÝÃµ
-		patientsLabel[8].setBounds(100, 100 ,100,100); // ±¤Áø
-		patientsLabel[9].setBounds(100, 100 ,100,100); // ¼­´ë¹®
-		patientsLabel[10].setBounds(100, 100 ,100,100); // Áß¶û
-		patientsLabel[11].setBounds(100, 100 ,100,100); // °­ºÏ
-		patientsLabel[12].setBounds(100, 100 ,100,100); // °ü¾Ç
-		patientsLabel[13].setBounds(100, 100 ,100,100); // ±¸·Î
-		patientsLabel[14].setBounds(100, 100 ,100,100); // ¿µµîÆ÷
-		patientsLabel[15].setBounds(100, 100 ,100,100); // ¸¶Æ÷
-		patientsLabel[16].setBounds(100, 100 ,100,100); // Á¾·Î
-		patientsLabel[17].setBounds(100, 100 ,100,100); // µµºÀ
-		patientsLabel[18].setBounds(100, 100 ,100,100); // ¿ë»ê
-		patientsLabel[19].setBounds(100, 100 ,100,100); // µ¿ÀÛ
-		patientsLabel[20].setBounds(100, 100 ,100,100); // ¼­ÃÊ
-		patientsLabel[21].setBounds(100, 100 ,100,100); // ¼ÛÆÄ
-		patientsLabel[22].setBounds(100, 100 ,100,100); // ³ë¿ø
-		patientsLabel[23].setBounds(100, 100 ,100,100); // ¼ºµ¿
-		patientsLabel[24].setBounds(100, 100 ,100,100); // ¾çÃµ
-		patientsLabel[25].setBounds(100, 100 ,100,100); // µ¿´ë¹®
+		patientsLabel[1].setBounds(150, 400 ,100,100); // °­¼­
+		patientsLabel[2].setBounds(720, 430 ,100,100); // °­µ¿
+		patientsLabel[3].setBounds(555, 540 ,100,100); // °­³²
+		patientsLabel[4].setBounds(500, 330 ,100,100); // ¼ººÏ
+		patientsLabel[5].setBounds(455, 415 ,100,100); // Áß±¸
+		patientsLabel[6].setBounds(340, 300 ,100,100); // ÀºÆò
+		patientsLabel[7].setBounds(300, 620 ,100,100); // ±ÝÃµ
+		patientsLabel[8].setBounds(620, 440 ,100,100); // ±¤Áø
+		patientsLabel[9].setBounds(360, 385 ,100,100); // ¼­´ë¹®
+		patientsLabel[10].setBounds(630, 340 ,100,100); // Áß¶û
+		patientsLabel[11].setBounds(485, 250 ,100,100); // °­ºÏ
+		patientsLabel[12].setBounds(370, 605 ,100,100); // °ü¾Ç
+		patientsLabel[13].setBounds(190, 555 ,100,100); // ±¸·Î
+		patientsLabel[14].setBounds(310, 500 ,100,100); // ¿µµîÆ÷
+		patientsLabel[15].setBounds(310, 425 ,100,100); // ¸¶Æ÷
+		patientsLabel[16].setBounds(440, 370 ,100,100); // Á¾·Î
+		patientsLabel[17].setBounds(530, 205 ,100,100); // µµºÀ
+		patientsLabel[18].setBounds(430, 475 ,100,100); // ¿ë»ê
+		patientsLabel[19].setBounds(370, 535 ,100,100); // µ¿ÀÛ
+		patientsLabel[20].setBounds(480, 570 ,100,100); // ¼­ÃÊ
+		patientsLabel[21].setBounds(665, 530 ,100,100); // ¼ÛÆÄ
+		patientsLabel[22].setBounds(595, 235 ,100,100); // ³ë¿ø
+		patientsLabel[23].setBounds(535, 430 ,100,100); // ¼ºµ¿
+		patientsLabel[24].setBounds(210, 500 ,100,100); // ¾çÃµ
+		patientsLabel[25].setBounds(565, 370 ,100,100); // µ¿´ë¹®
 		
 		add(labelPane);
 		
@@ -242,6 +242,202 @@ public class All extends JFrame{
 			    		patientsLabel[1].setVisible(true);
 			    		
 			    		System.out.println("°­¼­±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "°­µ¿±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[2].setVisible(true);
+			    		
+			    		System.out.println("°­µ¿±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "°­³²±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[3].setVisible(true);
+			    		
+			    		System.out.println("°­³²±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¼ººÏ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[4].setVisible(true);
+			    		
+			    		System.out.println("¼ººÏ±¸ ¼±ÅÎ µÊ");
+			    	}if(comboSelected == "Áß±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[5].setVisible(true);
+			    		
+			    		System.out.println("Áß±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "ÀºÆò±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[6].setVisible(true);
+			    		
+			    		System.out.println("ÀºÆò±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "±ÝÃµ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[7].setVisible(true);
+			    		
+			    		System.out.println("±ÝÃµ±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "±¤Áø±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[8].setVisible(true);
+			    		
+			    		System.out.println("±¤Áø±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¼­´ë¹®±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[9].setVisible(true);
+			    		
+			    		System.out.println("¼­´ë¹®±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "Áß¶û±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[10].setVisible(true);
+			    		
+			    		System.out.println("Áß¶û±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "°­ºÏ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[11].setVisible(true);
+			    		
+			    		System.out.println("°­ºÏ±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "°ü¾Ç±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[12].setVisible(true);
+			    		
+			    		System.out.println("°ü¾Ç±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "±¸·Î±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[13].setVisible(true);
+			    		
+			    		System.out.println("±¸·Î±¸ ¼±ÅÎ µÊ");
+			    	}if(comboSelected == "¿µµîÆ÷±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[14].setVisible(true);
+			    		
+			    		System.out.println("¿µµîÆ÷±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¸¶Æ÷±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[15].setVisible(true);
+			    		
+			    		System.out.println("¸¶Æ÷±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "Á¾·Î±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[16].setVisible(true);
+			    		
+			    		System.out.println("Á¾·Î±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "µµºÀ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[17].setVisible(true);
+			    		
+			    		System.out.println("µµºÀ±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¿ë»ê±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[18].setVisible(true);
+			    		
+			    		System.out.println("¿ë»ê±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "µ¿ÀÛ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[19].setVisible(true);
+			    		
+			    		System.out.println("µ¿ÀÛ±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¼­ÃÊ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[20].setVisible(true);
+			    		
+			    		System.out.println("¼­ÃÊ±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¼ÛÆÄ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[21].setVisible(true);
+			    		
+			    		System.out.println("¼ÛÆÄ±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "³ë¿ø±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[22].setVisible(true);
+			    		
+			    		System.out.println("³ë¿ø±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¼ºµ¿±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[23].setVisible(true);
+			    		
+			    		System.out.println("¼ºµ¿±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "¾çÃµ±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[24].setVisible(true);
+			    		
+			    		System.out.println("¾çÃµ±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "µ¿´ë¹®±¸") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(false);
+			    		
+			    		patientsLabel[25].setVisible(true);
+			    		
+			    		System.out.println("µ¿´ë¹®±¸ ¼±ÅÎ µÊ");
+			    	}
+			    	if(comboSelected == "ÀüÃ¼") {
+			    		for(int i=1; i<26; i++)
+			    			patientsLabel[i].setVisible(true);
+			    		
+			    		System.out.println("ÀüÃ¼ ¼±ÅÎ µÊ");
 			    	}
 				}
 			}

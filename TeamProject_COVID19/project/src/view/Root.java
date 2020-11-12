@@ -40,7 +40,7 @@ public class Root extends JFrame {
 		
 	    //백그라운드 이미지 받아오기
 	    try {
-            img = ImageIO.read(new File("img/RootBackground.png"));
+            img = ImageIO.read(new File("project/img/RootBackground.png"));
             System.out.println("Image load Success");
         } catch (IOException e) {
             System.out.println("Image load Fail");

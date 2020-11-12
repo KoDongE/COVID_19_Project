@@ -38,7 +38,7 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		 try {
-	            img = ImageIO.read(new File("img/MainWindowBackground.png"));
+	            img = ImageIO.read(new File("project/img/MainWindowBackground.png"));
 	            System.out.println("Image load Success");
 	        } catch (IOException e) {
 	            System.out.println("Image load Fail");
