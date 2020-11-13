@@ -58,7 +58,7 @@ public class All extends JFrame{
 		setSize(1600, 900);
 		
 		 try {
-	            img = ImageIO.read(new File("project/img/allBackground.png"));
+	            img = ImageIO.read(new File("img/allBackground.png"));
 	            System.out.println("\nImage load Success");
 	        } catch (IOException e) {
 	            System.out.println("Image load Fail");

@@ -38,7 +38,7 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		 try {
-	            img = ImageIO.read(new File("project/img/MainWindowBackground.png"));
+	            img = ImageIO.read(new File("img/MainWindowBackground.png"));
 	            System.out.println("Image load Success");
 	        } catch (IOException e) {
 	            System.out.println("Image load Fail");
@@ -225,8 +225,12 @@ public class MainWindow extends JFrame {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+			}
+			if((JButton) e.getSource() == seeDate) {
+				setVisible(false);
+					Date date = new Date();
+			}
 		}
-	}
 	}
 }
 	
