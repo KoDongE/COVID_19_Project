@@ -35,7 +35,7 @@ public class MainWindow extends JFrame {
 	public MainWindow() throws SQLException {
 		setTitle("Test");
 		setSize(1600, 900);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 		
 		 try {
 	            img = ImageIO.read(new File("img/MainWindowBackground.png"));
@@ -105,7 +105,7 @@ public class MainWindow extends JFrame {
         add(layeredPane);
 		setResizable(false); // 프로그램 크기 조절 불가 설정
     	setLocationRelativeTo(null); // 화면 중앙에 오도록 하는 설정  
-    	
+    	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
 	public void setGraph() throws SQLException {

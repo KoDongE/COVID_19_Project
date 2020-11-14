@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -25,6 +27,8 @@ public class Root extends JFrame {
 	JTextField passwordTextField;
 	JButton loginButton;
 	JButton signupButton;
+	JLabel loginFail;
+	boolean login;
 	
 	buttonlistener movelistener = new buttonlistener();
 	private member mb;
@@ -79,8 +83,15 @@ public class Root extends JFrame {
         signupButton = new JButton("Resigter");
         signupButton.setBounds(755, 750, 104, 48);
         layeredPane.add(signupButton);
+        signupButton.addActionListener(movelistener);
         
-       
+        loginFail = new JLabel("회원정보가 일치하지 않습니다.");
+        loginFail.setBounds(755, 600, 300, 100);
+        loginFail.setForeground(Color.RED);
+        layeredPane.add(loginFail);
+        loginFail.setVisible(false);
+        
+        
         //마지막 추가
         layeredPane.add(panel);
         add(layeredPane);
@@ -96,14 +107,19 @@ public class Root extends JFrame {
 		}
 	}
 	
-	public void LoginAction(ActionEvent e) throws SQLException {
+	public boolean LoginAction(ActionEvent e) throws SQLException {
 		String id = loginTextField.getText();
 		String pw = passwordTextField.getText();
 		System.out.println("Login 버튼 눌림");
 		
 		if(mb.login(id, pw)) {
 			setVisible(false);
-			MainWindow main = new MainWindow();
+			return true;
+		}
+		else {
+			System.out.println("Login Fail");
+			loginFail.setVisible(true);
+			return false;
 		}
 	}
 	
@@ -115,10 +131,18 @@ public class Root extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if((JButton) e.getSource() == loginButton)
 				try {
-					LoginAction(e);
+					if(LoginAction(e)) {
+						MainWindow main = new MainWindow();
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+			else if((JButton) e.getSource() == signupButton) {
+				System.out.println("Signup Button Pressed");
+				setVisible(false);
+				Signup signup = new Signup();
+			}
 		}
+			
 	}
 }

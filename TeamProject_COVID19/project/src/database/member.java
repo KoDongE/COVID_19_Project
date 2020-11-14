@@ -9,8 +9,8 @@ public class member {
 		db = DBConnection.getInstance();
 	}
 	
-	public void register(String id, String password, String name) throws SQLException {
-		String query = "INSERT INTO members(id, password, name) VALUES('"+id+"','"+password+"','"+name+"');";
+	public void register(String id, String password, String name, String live) throws SQLException {
+		String query = "INSERT INTO members(id, password, name, live) VALUES('"+id+"','"+password+"','"+name+"', '"+live+"');";
 		System.out.println(query);
 		
 		if(DBConnection.st.executeUpdate(query)>0) 

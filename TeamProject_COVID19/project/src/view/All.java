@@ -85,9 +85,10 @@ public class All extends JFrame{
     	layeredPane.add(panel);
         add(layeredPane);
 		//setResizable(false); // 프로그램 크기 조절 불가 설정
-    	setLocationRelativeTo(null); // 화면 중앙에 오도록 하는 설정    
-    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	setLocationRelativeTo(null); // 화면 중앙에 오도록 하는 설정   
     	System.out.println("서울시 전제 확진자 불러옴");
+    	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	
 	}
 	
 	public void showComboBox() {
