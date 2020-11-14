@@ -21,13 +21,13 @@ import database.member;
 import view.Root.buttonlistener;
 
 public class Signup extends JFrame {
-	JLabel nameLabel, idLabel, pwLabelCheck, pwLabel, liveLabel;
+	JLabel nameLabel, idLabel, pwLabelCheck, pwLabel, liveLabel, idDup, pwError, registerSuccess;
 	JTextField nameText, idText, pwLabelCheckText, pwText;
 	JComboBox<String> liveComboBox;
 	JButton register, goBack;
 	String name, id, pw, pwCheck, live; 
-	ButtonListener buttonlistener = new ButtonListener();
-	
+	ButtonListener buttonListener = new ButtonListener();
+
 	BufferedImage img = null;
 	member mb;
 	final String[] gu_nameLabel = { "전체", "강서구", "강동구", "강남구", "성북구", "중구", "은평구", "금천구", "광진구", "서대문구", "중랑구", "강북구", "관악구", "구로구", "영등포구", "마포구", "종로구", "도봉구", "용산구", "동작구", "서초구", "송파구", "노원구", "성동구", "양천구", "동대문구"};
@@ -37,7 +37,6 @@ public class Signup extends JFrame {
 		
 		setTitle("Test");
 		setSize(1600, 900);
-		
 		
 		 try {
 		        img = ImageIO.read(new File("img/RootBackground.png"));
@@ -53,7 +52,6 @@ public class Signup extends JFrame {
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0,0,1600,900);
 		layeredPane.setLayout(null);
-		
 		
 		nameLabel = new JLabel("이름");
 		nameLabel.setBounds(400, 100, 100, 100);
@@ -71,6 +69,21 @@ public class Signup extends JFrame {
 		pwLabel.setBounds(500, 300, 100, 100);
 		layeredPane.add(pwLabel);
 		
+		idDup = new JLabel("중복된 아이디입니다.");
+		idDup.setBounds(500, 400, 100, 100);
+		layeredPane.add(idDup);
+		idDup.setVisible(false);
+		
+		pwError = new JLabel("패스워드가 일치하지 않습니다.");
+		pwError.setBounds(500,400,100,100);
+		layeredPane.add(pwError);
+		pwError.setVisible(false);
+		
+		registerSuccess = new JLabel("회원가입이 완료되었습니다.\n로그인 화면으로 돌아가주십시오.");
+		registerSuccess.setBounds(500,400,100,100);
+		layeredPane.add(registerSuccess);
+		registerSuccess.setVisible(false);
+		
 		pwLabelCheck = new JLabel("패스워드 확인");
 		pwLabelCheck.setBounds(800, 300, 100, 100);
 		layeredPane.add(pwLabelCheck);
@@ -78,39 +91,35 @@ public class Signup extends JFrame {
 		nameText = new JTextField();
 		nameText.setBounds(400, 200, 50, 20);
 		layeredPane.add(nameText);
-		name = nameText.getSelectedText();
-		
+				
 		idText = new JTextField();
 		idText.setBounds(500, 200, 200, 20);
 		layeredPane.add(idText);
-		id = idText.getText();
 		
 		pwText = new JTextField();
 		pwText.setBounds(500, 400, 200, 20);
 		layeredPane.add(pwText);
-		pw = pwText.getText();
 		
 		pwLabelCheckText = new JTextField();
 		pwLabelCheckText.setBounds(800, 400, 200, 20);
 		layeredPane.add(pwLabelCheckText);
-		pwCheck = pwLabelCheckText.getText();
 		
 		liveComboBox = new JComboBox();
 		liveComboBox.setModel(new DefaultComboBoxModel<String>(gu_nameLabel));
 		liveComboBox.setBounds(800, 200, 100, 30);
-		live = (String) liveComboBox.getSelectedItem();
+		
 		layeredPane.add(liveComboBox);
 		
 		register = new JButton("회원가입");
 		register.setBounds(650, 600, 100, 100);
 		layeredPane.add(register);
-		register.addActionListener(buttonlistener);
+		register.addActionListener(buttonListener);
 		
 		//goBack 버튼
     	goBack = new JButton("로그인 화면으로");
     	goBack.setBounds(1300, 750, 200, 100);
     	layeredPane.add(goBack);
-    	goBack.addActionListener(buttonlistener);
+    	goBack.addActionListener(buttonListener);
     	
 		layeredPane.add(signupPanel);
 
@@ -122,20 +131,37 @@ public class Signup extends JFrame {
     	setLocationRelativeTo(null); // 화면 중앙에 오도록 하는 설정  
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	   	}
-
+	
 	class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if((JButton) e.getSource() == register)
-			{
-				System.out.println("들어옴");
+			
+			if((JButton) e.getSource() == register) {
+				idDup.setVisible(false);
+				pwError.setVisible(false);
+				id = idText.getText();
+				pw = pwText.getText();
+				name = nameText.getText();
+				live = (String) liveComboBox.getSelectedItem();
+				pwCheck = pwLabelCheckText.getText();
 				try {
-					mb.register(id, pw, name, live);
+					if(mb.isId_dup(id)) {
+						idDup.setVisible(true);
+					}
+					else if(!pw.equals(pwCheck)) {
+						pwError.setVisible(true);
+					}
+					else {
+						registerSuccess.setVisible(true);
+						mb.register(id, pw, name, live);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
-			
+			if((JButton) e.getSource() == goBack) {
+				setVisible(false);
+				Root root = new Root();
+			}
 		}
 			
 	}

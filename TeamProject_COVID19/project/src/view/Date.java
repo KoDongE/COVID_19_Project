@@ -23,9 +23,10 @@ import view.MainWindow.MainWindowPanel;
 public class Date extends JFrame {
 	BufferedImage img = null;
 	buttonlistener buttonlistener = new buttonlistener();
-	JButton goback;
-	JLabel days[][] = new JLabel[6][7];
-	String today = "8.27.";
+	JButton previousMonth, nextMonth, goback;
+	JLabel month, days[][] = new JLabel[6][7];
+	String today = "8.27";
+	String moveMonth;
 	int todayMonth;
 	int startMonth;
 	int monthDays;
@@ -34,11 +35,11 @@ public class Date extends JFrame {
 	
 	calInfo ci = new calInfo();
 	
-	public Date() {
+	
+	public Date(String date) {
+		today = date;
 		setTitle("Test");
 		setSize(1600, 900);
-		
-		JLayeredPane layeredPane = new JLayeredPane();
 		
 		try {
 	           img = ImageIO.read(new File("img/MainWindowBackground.png"));
@@ -50,11 +51,14 @@ public class Date extends JFrame {
 		
 		for(int i=0; i<6; i++) {
 			for(int j=0; j<7; j++) {
-				days[i][j] = new JLabel("0");
+				days[i][j] = new JLabel();
 			}
 		}
 		
-		DrawCal(today);
+		JLayeredPane layeredPane = new JLayeredPane();
+		DatePanel panel = new DatePanel();
+		
+		DrawCal(date);
 		
 		for(int i=0; i<6; i++) {
 			for(int j=0; j<7; j++) {
@@ -62,6 +66,19 @@ public class Date extends JFrame {
 			}
 		}
 		
+		month = new JLabel(today.substring(0,2));
+		month.setBounds(600, 400, 100, 100);
+		layeredPane.add(month);
+		
+		previousMonth = new JButton("<-");
+		previousMonth.setBounds(400, 400, 50, 50);
+		previousMonth.addActionListener(buttonlistener);
+		
+		nextMonth = new JButton("->");
+		nextMonth.setBounds(800, 400, 50, 50);
+		nextMonth.addActionListener(buttonlistener);
+		layeredPane.add(previousMonth);
+		layeredPane.add(nextMonth);
 		
 		//goback 버튼
     	goback = new JButton("메인으로");
@@ -69,10 +86,9 @@ public class Date extends JFrame {
     	layeredPane.add(goback);
     	goback.addActionListener(buttonlistener);
     	
-		DatePanel panel = new DatePanel();
         panel.setBounds(0, 0, 1600, 900); // 위치 설정정
-        add(layeredPane);
         layeredPane.add(panel);
+        add(layeredPane);
         setVisible(true);
         
         setLocationRelativeTo(null); // 화면 중앙에 오도록 하는 설정    
@@ -80,17 +96,18 @@ public class Date extends JFrame {
 	}
 	
 	public void DrawCal(String today) {
+		
 		String todayMonthString = today.substring(0,2);
-		String todayDayString; //  =today.substring(2,4);
-		int todayMonth = 0;
+		String todayDayString;
+		todayMonth = 0;
 		int todayDay = 0;
 		
+		System.out.println("today : " + today);
+		
 		if(today.contains(".")) {
-			System.out.println("true");
 			todayMonthString = todayMonthString.substring(0,1);
 			todayMonth = Integer.parseInt(todayMonthString);
 		
-			
 			if(today.substring(3,4) == ".") {
 				todayDayString = today.substring(2,3);
 				todayDay = Integer.parseInt(todayDayString);
@@ -99,13 +116,11 @@ public class Date extends JFrame {
 				todayDayString = today.substring(2,4);
 				todayDay = Integer.parseInt(todayDayString);
 			}
-			
 		}
 		
 		startMonth = ci.firstdate(2020, todayMonth);
 		monthDays = ci.leap_date(2020, todayMonth);
 		
-		System.out.println(startMonth + " " + monthDays);
 		int ds= 0;
 		String dss;
 		
@@ -143,6 +158,12 @@ public class Date extends JFrame {
 			}
 			startMonth=0;
 		}
+		
+		for(int i=0; i<6; i++) {
+			for(int j=0; j<7; j++) {
+				days[i][j].setVisible(true);
+			}
+		}
 	}
 	
 	class DatePanel extends JPanel {
@@ -160,6 +181,27 @@ public class Date extends JFrame {
 	
 	class buttonlistener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			if((JButton) e.getSource() == previousMonth) {
+				System.out.println("previousMonth Pressed");
+				
+				String todayMonthString = today.substring(0,2);
+				
+				if(today.contains(".")) {
+					todayMonthString = todayMonthString.substring(0,1);
+					todayMonth = Integer.parseInt(todayMonthString);
+				}
+				
+				moveMonth = Integer.toString(todayMonth-1);
+				System.out.println("move to " + moveMonth + " Month");
+				System.out.println(moveMonth + ".00");
+				
+				setVisible(false);
+				if(todayMonth-1 == 0) {
+					Date date = new Date("9.00");
+				}
+				Date date = new Date(moveMonth + ".00");
+				
+			}
 				if((JButton) e.getSource() == goback) {
 					setVisible(false);
 					try {
@@ -168,6 +210,7 @@ public class Date extends JFrame {
 						e1.printStackTrace();
 					}
 				}
+				
 		}
 	}
 }

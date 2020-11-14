@@ -228,7 +228,10 @@ public class MainWindow extends JFrame {
 			}
 			if((JButton) e.getSource() == seeDate) {
 				setVisible(false);
-					Date date = new Date();
+					Date date = new Date("8.27");
+			}
+			if((JButton) e.getSource() == close) {
+				System.exit(1);
 			}
 		}
 	}

@@ -41,4 +41,23 @@ public class member {
 		return false;
 	}
 	
+	public boolean isId_dup(String id) throws SQLException {
+		String query = "SELECT * FROM members "
+				+ "WHERE id = '"+id+"';";
+		System.out.println(query);
+		if(DBConnection.st.execute(query)) {
+			DBConnection.rs = DBConnection.st.getResultSet();
+		}
+		
+		while(DBConnection.rs.next()) {
+			String _id = DBConnection.rs.getString("id");
+			//id == query true일 경우 겹치는 상황
+			if(_id.equals(id)) {
+				System.out.println("ID is dup");
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
