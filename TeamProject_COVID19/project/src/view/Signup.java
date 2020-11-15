@@ -39,7 +39,7 @@ public class Signup extends JFrame {
 		setSize(1600, 900);
 		
 		 try {
-		        img = ImageIO.read(new File("img/RootBackground.png"));
+		        img = ImageIO.read(new File("project/img/RootBackground.png"));
 		        System.out.println("Image load Success");
 		    } catch (IOException e) {
 		        System.out.println("Image load Fail");
@@ -54,64 +54,64 @@ public class Signup extends JFrame {
 		layeredPane.setLayout(null);
 		
 		nameLabel = new JLabel("이름");
-		nameLabel.setBounds(400, 100, 100, 100);
+		nameLabel.setBounds(650, 200, 100, 100);
 		layeredPane.add(nameLabel);
 		
 		idLabel = new JLabel("아이디");
-		idLabel.setBounds(500, 100, 100, 100);
+		idLabel.setBounds(640, 250, 100, 100);
 		layeredPane.add(idLabel);
 		
 		liveLabel = new JLabel("거주지");
-		liveLabel.setBounds(800, 100, 100, 100);
+		liveLabel.setBounds(640, 300, 100, 100);
 		layeredPane.add(liveLabel);
 		
 		pwLabel = new JLabel("패스워드");
-		pwLabel.setBounds(500, 300, 100, 100);
+		pwLabel.setBounds(630, 350, 100, 100);
 		layeredPane.add(pwLabel);
 		
 		idDup = new JLabel("중복된 아이디입니다.");
-		idDup.setBounds(500, 400, 100, 100);
+		idDup.setBounds(700, 273, 200, 100);
 		layeredPane.add(idDup);
 		idDup.setVisible(false);
 		
 		pwError = new JLabel("패스워드가 일치하지 않습니다.");
-		pwError.setBounds(500,400,100,100);
+		pwError.setBounds(700,425,300,100);
 		layeredPane.add(pwError);
 		pwError.setVisible(false);
 		
-		registerSuccess = new JLabel("회원가입이 완료되었습니다.\n로그인 화면으로 돌아가주십시오.");
-		registerSuccess.setBounds(500,400,100,100);
+		registerSuccess = new JLabel("회원가입이 완료되었습니다.\n 로그인 화면으로 돌아가주십시오.");
+		registerSuccess.setBounds(595,440,400,200);
 		layeredPane.add(registerSuccess);
 		registerSuccess.setVisible(false);
 		
 		pwLabelCheck = new JLabel("패스워드 확인");
-		pwLabelCheck.setBounds(800, 300, 100, 100);
+		pwLabelCheck.setBounds(605, 400, 100, 100);
 		layeredPane.add(pwLabelCheck);
 		
 		nameText = new JTextField();
-		nameText.setBounds(400, 200, 50, 20);
+		nameText.setBounds(700, 240, 50, 20);
 		layeredPane.add(nameText);
 				
 		idText = new JTextField();
-		idText.setBounds(500, 200, 200, 20);
+		idText.setBounds(700, 290, 200, 20);
 		layeredPane.add(idText);
 		
 		pwText = new JTextField();
-		pwText.setBounds(500, 400, 200, 20);
+		pwText.setBounds(700, 390, 200, 20);
 		layeredPane.add(pwText);
 		
 		pwLabelCheckText = new JTextField();
-		pwLabelCheckText.setBounds(800, 400, 200, 20);
+		pwLabelCheckText.setBounds(700, 440, 200, 20);
 		layeredPane.add(pwLabelCheckText);
 		
 		liveComboBox = new JComboBox();
 		liveComboBox.setModel(new DefaultComboBoxModel<String>(gu_nameLabel));
-		liveComboBox.setBounds(800, 200, 100, 30);
+		liveComboBox.setBounds(700, 335, 100, 30);
 		
 		layeredPane.add(liveComboBox);
 		
 		register = new JButton("회원가입");
-		register.setBounds(650, 600, 100, 100);
+		register.setBounds(700, 600, 100, 100);
 		layeredPane.add(register);
 		register.addActionListener(buttonListener);
 		
