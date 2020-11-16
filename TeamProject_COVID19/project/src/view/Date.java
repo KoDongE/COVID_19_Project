@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+import database.patientsData;
 import lib.calInfo;
 import view.All.buttonlistener;
 import view.MainWindow.MainWindowPanel;
@@ -25,6 +26,7 @@ public class Date extends JFrame {
 	buttonlistener buttonlistener = new buttonlistener();
 	JButton previousMonth, nextMonth, goback;
 	JLabel month, days[][] = new JLabel[6][7];
+	JLabel patients[][] = new JLabel[6][7];
 	String today = "8.27";
 	String moveMonth;
 	int todayMonth;
@@ -33,13 +35,16 @@ public class Date extends JFrame {
 	String dayss[][];
 	String monthDay[][];
 	
+	private patientsData pd;
+	
 	calInfo ci = new calInfo();
 	
-	
-	public Date(String date) {
+	public Date(String date) throws SQLException {
 		today = date;
 		setTitle("Test");
 		setSize(1600, 900);
+		
+		pd = new patientsData();
 		
 		try {
 	           img = ImageIO.read(new File("img/MainWindowBackground.png"));
@@ -51,7 +56,8 @@ public class Date extends JFrame {
 		
 		for(int i=0; i<6; i++) {
 			for(int j=0; j<7; j++) {
-				days[i][j] = new JLabel();
+				patients[i][j] = new JLabel("0");
+				days[i][j] = new JLabel("0");
 			}
 		}
 		
@@ -62,10 +68,11 @@ public class Date extends JFrame {
 		
 		for(int i=0; i<6; i++) {
 			for(int j=0; j<7; j++) {
+				layeredPane.add(patients[i][j]);
 				layeredPane.add(days[i][j]);
 			}
 		}
-		
+			
 		month = new JLabel(today.substring(0,2));
 		month.setBounds(600, 400, 100, 100);
 		layeredPane.add(month);
@@ -95,10 +102,16 @@ public class Date extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
-	public void DrawCal(String today) {
+	public String CountPatients(String month, String day) throws SQLException {
+		int count = pd.NumberOfDatePatients(month, day) + pd.NumberOfDatePatients(month, "0" + day);
+		
+		return Integer.toString(count);
+	}
+	
+	public void DrawCal(String today) throws SQLException {
 		
 		String todayMonthString = today.substring(0,2);
-		String todayDayString;
+		String todayDayString = null;
 		todayMonth = 0;
 		int todayDay = 0;
 		
@@ -129,13 +142,14 @@ public class Date extends JFrame {
 		for(int i=0; i<6; i++) {
 			while(startMonth != 7) {
 				ds++;
-	
-				days[i][startMonth] = new JLabel("0");
-				
+
 				dss = Integer.toString(ds);
 				
 				days[i][startMonth].setText(dss);
 				days[i][startMonth].setBounds(440 + startMonth*100, 150 + i*120, 100, 100);
+				
+				patients[i][startMonth].setText(CountPatients(todayMonthString, Integer.toString(ds)));
+				patients[i][startMonth].setBounds(440 + startMonth*100, 200 + i*120, 100, 100);
 				
 				if(startMonth == 0) {
 					days[i][startMonth].setForeground(Color.RED);
@@ -197,9 +211,20 @@ public class Date extends JFrame {
 				
 				setVisible(false);
 				if(todayMonth-1 == 0) {
-					Date date = new Date("9.00");
+					try {
+						Date date = new Date("9.00");
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
-				Date date = new Date(moveMonth + ".00");
+
+				try {
+					Date date = new Date(moveMonth + ".00");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 				if((JButton) e.getSource() == goback) {

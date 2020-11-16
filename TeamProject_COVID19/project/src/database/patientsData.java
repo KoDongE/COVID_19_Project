@@ -54,4 +54,17 @@ public class patientsData {
 		}
 		return pati;
 	}
+	
+	public int NumberOfDatePatients(String month, String day) throws SQLException {
+		int count;
+		String query = "SELECT COUNT(연번) As countCal FROM patients WHERE 확진일 = "+month+"."+day+"; ";
+		System.out.println(query);
+		DBConnection.st.execute(query);
+		DBConnection.rs = DBConnection.st.getResultSet();
+		DBConnection.rs.next();
+		
+		count = DBConnection.rs.getInt("countCal");
+		System.out.println("확진사 수 : " + count);
+		return count;
+	}
 }

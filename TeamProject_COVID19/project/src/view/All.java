@@ -58,7 +58,7 @@ public class All extends JFrame{
 		setSize(1600, 900);
 		
 		 try {
-	            img = ImageIO.read(new File("project/img/allBackground.png"));
+	            img = ImageIO.read(new File("img/allBackground.png"));
 	            System.out.println("\nImage load Success");
 	        } catch (IOException e) {
 	            System.out.println("Image load Fail");
@@ -69,7 +69,7 @@ public class All extends JFrame{
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBounds(0,0,1600,900);
 		layeredPane.setLayout(null);
-				
+
 		//패널
 		AllPanel panel = new AllPanel();
 		panel.setBounds(0, 0, 1600, 900); // 위치 설정정
@@ -211,6 +211,7 @@ public class All extends JFrame{
 			return table;
 		}
 	}
+	
 	
 	class AllPanel extends JPanel {
 			public void paint(Graphics g) {

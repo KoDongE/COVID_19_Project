@@ -38,7 +38,7 @@ public class MainWindow extends JFrame {
 		
 		
 		 try {
-	            img = ImageIO.read(new File("project/img/MainWindowBackground.png"));
+	            img = ImageIO.read(new File("img/MainWindowBackground.png"));
 	            System.out.println("Image load Success");
 	        } catch (IOException e) {
 	            System.out.println("Image load Fail");
@@ -228,7 +228,12 @@ public class MainWindow extends JFrame {
 			}
 			if((JButton) e.getSource() == seeDate) {
 				setVisible(false);
-					Date date = new Date("8.27");
+					try {
+						Date date = new Date("8.27");
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 			}
 			if((JButton) e.getSource() == close) {
 				System.exit(1);

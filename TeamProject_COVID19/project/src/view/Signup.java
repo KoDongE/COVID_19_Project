@@ -39,7 +39,7 @@ public class Signup extends JFrame {
 		setSize(1600, 900);
 		
 		 try {
-		        img = ImageIO.read(new File("project/img/RootBackground.png"));
+		        img = ImageIO.read(new File("img/RootBackground.png"));
 		        System.out.println("Image load Success");
 		    } catch (IOException e) {
 		        System.out.println("Image load Fail");
