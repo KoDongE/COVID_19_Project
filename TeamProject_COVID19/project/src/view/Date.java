@@ -47,7 +47,7 @@ public class Date extends JFrame {
 		pd = new patientsData();
 		
 		try {
-	           img = ImageIO.read(new File("img/MainWindowBackground.png"));
+	           img = ImageIO.read(new File("project/img/MainWindowBackground.png"));
 	           System.out.println("Image load Success");
 	        } catch (IOException e) {
 	           System.out.println("Image load Fail");
@@ -74,15 +74,15 @@ public class Date extends JFrame {
 		}
 			
 		month = new JLabel(today.substring(0,2));
-		month.setBounds(600, 400, 100, 100);
+		month.setBounds(750, 30, 100, 100);
 		layeredPane.add(month);
 		
 		previousMonth = new JButton("<-");
-		previousMonth.setBounds(400, 400, 50, 50);
+		previousMonth.setBounds(300, 400, 50, 50);
 		previousMonth.addActionListener(buttonlistener);
 		
 		nextMonth = new JButton("->");
-		nextMonth.setBounds(800, 400, 50, 50);
+		nextMonth.setBounds(1150, 400, 50, 50);
 		nextMonth.addActionListener(buttonlistener);
 		layeredPane.add(previousMonth);
 		layeredPane.add(nextMonth);
@@ -146,10 +146,10 @@ public class Date extends JFrame {
 				dss = Integer.toString(ds);
 				
 				days[i][startMonth].setText(dss);
-				days[i][startMonth].setBounds(440 + startMonth*100, 150 + i*120, 100, 100);
+				days[i][startMonth].setBounds(440 + startMonth*100, 100 + i*120, 100, 100);
 				
 				patients[i][startMonth].setText(CountPatients(todayMonthString, Integer.toString(ds)));
-				patients[i][startMonth].setBounds(440 + startMonth*100, 200 + i*120, 100, 100);
+				patients[i][startMonth].setBounds(440 + startMonth*100, 150 + i*120, 100, 100);
 				
 				if(startMonth == 0) {
 					days[i][startMonth].setForeground(Color.RED);
@@ -185,11 +185,11 @@ public class Date extends JFrame {
 			super.paint(g);
 			g.drawImage(img, 0, 0, null);
 			
-			for(int i=1; i<6; i++)
-				g.drawLine(200, i*120, 900, i*120);
+			for(int i=1; i<7; i++)
+				g.drawLine(400, i*120, 1100, i*120);
 			
-			for(int i=2; i<10; i++)
-				g.drawLine(i*100, 120, i*100, 600);
+			for(int i=4; i<12; i++)
+				g.drawLine(i*100, 120, i*100, 720);
 		}
 	}
 	
